@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { UserProduct } from '../../shared/models/userProduct.model';
+import { CommonService } from '../../shared/services/common/common.service';
 
 @Component({
   selector: 'app-products',
@@ -68,8 +69,7 @@ export class ProductsComponent {
     }
   ];
 
-  constructor() {
-  }
+  constructor(public common:CommonService) {}
 
   openProductLink(link: string) {
     window.open(link, '_blank');

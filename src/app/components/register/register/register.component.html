@@ -8,6 +8,7 @@
           type="text"
           id="username"
           name="username"
+          [(ngModel)]="user.username"
           placeholder="Inserisci il nome utente"
           required
         />
@@ -18,6 +19,7 @@
           type="email"
           id="email"
           name="email"
+          [(ngModel)]="user.email"
           placeholder="Inserisci la tua email"
           required
         />
@@ -28,6 +30,7 @@
           [type]="showPassword ? 'text' : 'password'"
           id="password"
           name="password"
+          [(ngModel)]="user.password"
           placeholder="Crea una password"
           required
           style="padding-right: 2.5rem;"
