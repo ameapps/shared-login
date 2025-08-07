@@ -1,3 +1,4 @@
+// Stile per la pagina prodotti
 .products-container {
   margin: 2rem auto;
   max-width: 900px;
@@ -5,7 +6,6 @@
 
   .products-title {
     color: var(--primary);
-    font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -19,13 +19,12 @@
       user-select: none;
       cursor: pointer;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(var(--primary), 0.15);
-      background: var(--card-bg);
+      box-shadow: 0 8px 32px rgba(33, 147, 176, 0.15);
       overflow: hidden;
       transition: box-shadow 0.2s;
 
       &:hover {
-        box-shadow: 0 12px 40px rgba(var(--primary), 0.25);
+        box-shadow: 0 12px 40px rgba(33, 147, 176, 0.25);
       }
 
       img {
@@ -43,7 +42,7 @@
       }
 
       p {
-        color: var(--text-main);
+        color: #333;
         font-size: 1rem;
         margin-bottom: 1rem;
       }
