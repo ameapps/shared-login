@@ -15,4 +15,15 @@ export class RegisterComponent {
     this.showPassword = !this.showPassword;
   }
 
+  async register() {
+    try {
+      // Implementa la logica di registrazione qui
+      alert('Registrazione completata con successo!');
+    } catch (error) {
+      console.error('Errore durante la registrazione:', error);
+      // Gestisci l'errore di registrazione
+      alert('Si è verificato un errore durante la registrazione. Riprova più tardi.');
+    }
+  }
+
 }

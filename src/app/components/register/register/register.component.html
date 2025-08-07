@@ -22,17 +22,22 @@
           required
         />
       </div>
-      <div class="input-group">
+      <div class="input-group" style="position: relative;">
         <label for="password">Password</label>
         <input
-          type="password"
+          [type]="showPassword ? 'text' : 'password'"
           id="password"
           name="password"
           placeholder="Crea una password"
           required
+          style="padding-right: 2.5rem;"
         />
+        <button type="button" class="hide" (click)="togglePasswordVisibility()">
+          <span *ngIf="!showPassword" aria-label="Mostra password" title="Mostra password">👁️</span>
+          <span *ngIf="showPassword" aria-label="Nascondi password" title="Nascondi password">🙈</span>
+        </button>
       </div>
-      <button type="submit">Registrati</button>
+      <button type="submit" (click)="register()">Registrati</button>
     </form>
   </div>
 </div>
