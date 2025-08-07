@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="login-card">
+    <h2>Accedi</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="input-group">
+        <label for="username">Nome utente</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Inserisci il nome utente"
+          required
+        >
+      </div>
+      <div class="input-group" style="position: relative;">
+        <label for="password">Password</label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Inserisci la password"
+          required
+          style="padding-right: 2.5rem;"
+        >
+        <button type="button"
+                (click)="togglePasswordVisibility()"
+                style="position: absolute; right: 8px; top: 38px; background: none; border: none; cursor: pointer; padding: 0;">
+          <span *ngIf="!showPassword" aria-label="Mostra password" title="Mostra password">👁️</span>
+          <span *ngIf="showPassword" aria-label="Nascondi password" title="Nascondi password">🙈</span>
+        </button>
+      </div>
+      <button type="submit">Login</button>
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+    </form>
+  </div>
+</div>
