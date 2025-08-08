@@ -2,18 +2,17 @@
   <div class="add-product-card">
     <h2>Aggiungi nuovo prodotto</h2>
     <form (ngSubmit)="onSubmit()" #addProductForm="ngForm">
+      <!-- Product name -->
       <div class="input-group">
         <label for="name">Nome prodotto</label>
         <input type="text" id="name" name="name" [(ngModel)]="product.name" placeholder="Nome prodotto" required />
       </div>
+      <!-- Description -->
       <div class="input-group">
         <label for="description">Descrizione</label>
         <input type="text" id="description" name="description" [(ngModel)]="product.description" placeholder="Descrizione" required />
       </div>
-      <div class="input-group">
-        <label for="link">Link</label>
-        <input type="url" id="link" name="link" [(ngModel)]="product.link" placeholder="Link al prodotto" required />
-      </div>
+      <!-- Image URL -->
       <div class="input-group">
         <label for="image">Immagine (URL)</label>
         <input type="url" id="image" name="image" [(ngModel)]="product.image" placeholder="URL immagine" />
