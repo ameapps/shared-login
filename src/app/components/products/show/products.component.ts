@@ -15,53 +15,53 @@ import { Router } from '@angular/router';
 export class ProductsComponent {
   products: UserProduct[] = [
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQTDH_xaXzMaRrJLZRxi93mtASR3D4H7rL3GKEzG8SBYcNY',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/CustomCv/4x.png?raw=true',
       name: 'CustomCv',
       description: 'App web che mostra il mostra il CV personalizzato',
       link: 'https://ameapps.github.io/CustomCv/#',
-      tags: ['app'],
+      tags: ['app', 'angular'],
     },
     {
       image: 'https://cdn.pixabay.com/photo/2022/07/05/11/06/mountains-7302806__480.jpg',
       name: 'SportTracker',
       description: 'App per il monitoraggio delle attività sportive e del cibo assunto',
       link: 'https://ameapps.github.io/SportTracker/#/menu/homepage',
-      tags: ['app'],
+      tags: ['app', 'angular'],
     },
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQTjurlK7ovuRaoUvV_-Z0xkAYbZha4TrbCHFx6zltjD0d8',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/GameScopa/1x.png?raw=true',
       name: 'GameScopa',
       description: 'Celebre gioco di carte italiano',
       link: 'https://ameapps.github.io/GameScopa',
-      tags: ['game']
+      tags: ['game', 'ionic', 'angular']
     },
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQSkyAtp9mrgQY7NhqzPFWQhAdHiaU1GSZU_XS5QwM63VHk',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/MomsDay/2025/1x.png?raw=true',
       name: 'MomsDay',
       description: 'App per la celebrazione della giornata della mamma',
       link: 'https://ameapps.github.io/MomsDay2025/',
-      tags: ['game']
+      tags: ['app', 'vanilla']
     },
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQS6QCMacAoET7lgaav6UFUhAd7oQ2CE78A5qN0I3-3BN8c',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/2x.jpg?raw=true',
       name: 'WordleClone',
       description: 'App che simula il gioco Wordle',
       link: 'https://ameapps.github.io/WordleClone/',
-      tags: ['app']
+      tags: ['game', 'vanilla']
     },
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQQptkhzQhBjQb9Q2UDvUyW8ARFWdYxZfTGlI3NNyL5djgU?width=320&height=398',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/LovePurpose/1x.png?raw=true',
       name: 'LovePurpose',
       description: 'App per dichiarare il proprio amere ad una ragazza',
       link: 'https://ameapps.github.io/LovePurpose/',
-      tags: ['game']
+      tags: ['app', 'vanilla']
     },
     {
-      image: 'https://1drv.ms/i/c/f343ed142930869c/IQRsRF0jY2W8QYvl9BOkxeT-AQvhdaQy-pT_PkliSa54mNo',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WorkTools/1x.png?raw=true',
       name: 'WorkTools',
       description: 'App che propone una serie di tools da usare sul lavoro',
       link: 'https://ameapps.github.io/WorkToolsV2.0/',
-      tags: ['app']
+      tags: ['app', 'angular']
     }
   ];
 
