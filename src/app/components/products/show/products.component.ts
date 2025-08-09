@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 export class ProductsComponent {
   products: UserProduct[] = [
     {
-      image: 'https://www.giardiniblog.it/wp-content/uploads/2022/05/immagine-tramonto-gratis.jpg',
-      name: 'Prodotto 1',
-      description: 'Descrizione del prodotto 1',
-      link: 'https://www.google.com/search?q=tramonto+gratis',
+      image: 'https://1drv.ms/i/c/f343ed142930869c/IQTDH_xaXzMaRrJLZRxi93mtASR3D4H7rL3GKEzG8SBYcNY',
+      name: 'CustomCv',
+      description: 'App web che mostra il mostra il CV personalizzato',
+      link: 'https://ameapps.github.io/CustomCv/#',
       tags: ['app'],
     },
     {
@@ -62,21 +62,7 @@ export class ProductsComponent {
       description: 'Descrizione del prodotto 7',
       link: 'https://www.google.com/search?q=prodotto+7+gratis',
       tags: ['app']
-    },
-    {
-      image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      name: 'Prodotto 8',
-      description: 'Descrizione del prodotto 8',
-      link: 'https://www.google.com/search?q=prodotto+8+gratis',
-      tags: ['game']
-    },
-    {
-      image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      name: 'Prodotto 9',
-      description: 'Descrizione del prodotto 9',
-      link: 'https://www.google.com/search?q=prodotto+9+gratis',
-      tags: ['app']
-    },
+    }
   ];
 
   // Filtro tag
