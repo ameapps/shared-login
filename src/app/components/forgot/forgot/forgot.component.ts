@@ -20,7 +20,8 @@ export class ForgotComponent {
     this.common.lastforgotPswRequest = {
       email: email,
       username: '',
-      password: ''
+      password: '',
+      uId: ''
     };
     // Invia la richiesta di reset della password
     alert(`Link di reset inviato a ${email}`);

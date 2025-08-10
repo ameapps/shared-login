@@ -18,6 +18,7 @@ export class LoginComponent {
     username: '',
     email: '',
     password: '',
+    uId: '',
   };
   error = '';
   showPassword = false;
@@ -47,7 +48,11 @@ export class LoginComponent {
       this.error = 'Credenziali non valide. Riprova.';
       return;
     }
-    //02. Accedo alla pagina dei prodotti
+    //02. Imposto le credenziali dell'utente appena ricevute 
+    this.common.lastLoggedUser.uId = loginResult.user.uid;
+    this.common.lastLoggedUser.username = this.user.username;  
+    this.common.lastLoggedUser.email = loginResult.user.email || '';
+    //03. Accedo alla pagina dei prodotti
     this.router.navigate(['/products']);
   }
 
