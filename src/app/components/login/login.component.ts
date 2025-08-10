@@ -41,6 +41,7 @@ export class LoginComponent {
     this.error = '';
     //01. Tento il login con le credenziali fornite
     this.common.currentLoggedUser = await this.fb_service.tryLogin(this.user) ?? undefined;
+    console.info('Credenziali Firebase:', this.common.currentLoggedUser);
     if (!this.common.currentLoggedUser) {
       this.error = 'Credenziali non valide. Riprova.';
       return;
