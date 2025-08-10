@@ -16,20 +16,31 @@ export class FirebaseHelper {
   private static apps: Map<string, FirebaseApp> = new Map();
 
   /** Legge dati da un percorso del DB */
-  static async getData(app: FirebaseApp, path: string): Promise<any> {
-    const db: Database = getDatabase(app);
+  static async getData(
+    app: FirebaseApp,
+    path: string,
+    dbUrl?: string
+  ): Promise<any> {
+    // Se dbUrl è fornito, lo passo a getDatabase, altrimenti uso il default
+    const db: Database = dbUrl ? getDatabase(app, dbUrl) : getDatabase(app);
     const dbData = await FirebaseHelper.getDbData(db, path);
     return dbData;
   }
 
-  /**Method getting the data available at the specified path using the specified database. */
+  /** Method getting the data available at the specified path using the specified database. */
   private static async getDbData(db: Database, path: any) {
     const starCountRef = ref(db, path);
     const prom = new Promise((resolve, reject) => {
-      onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        resolve(data);
-      });
+      onValue(
+        starCountRef,
+        (snapshot) => {
+          const data = snapshot.val();
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
     });
     return prom;
   }

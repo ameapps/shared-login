@@ -95,39 +95,38 @@ export class FirebaseService {
 
   // #region service
 
-async getUserProducts(uid: string): Promise<Record<string, boolean> | null> {
-  try {
-    console.log(`Recupero prodotti per l'utente: ${uid}`);
-
-    if (!uid) {
-      console.error('Nessun nome utente fornito per il recupero dei prodotti.');
+  async getUserProducts(uid: string): Promise<Record<string, boolean> | null> {
+    try {
+      console.log(`Recupero prodotti per l'utente: ${uid}`);
+      //01. Controlli
+      if (!uid) {
+        console.error(
+          'Nessun nome utente fornito per il recupero dei prodotti.'
+        );
+        return null;
+      }
+      if (this.common_service.fbApp == null) {
+        console.error('API Firebase non inizializzata.');
+        return null;
+      }
+      //02. Recupero i prodotti dell'utente
+      const dbUrl =
+        'https://amedevapps-47624-default-rtdb.europe-west1.firebasedatabase.app';
+      const data = await FirebaseHelper.getData(
+        this.common_service.fbApp,
+        'users/' + uid + '/allowedProds',
+        dbUrl
+      );
+      
+      return data;
+    } catch (error) {
+      console.error(
+        `Errore nel recupero dei prodotti per l'utente ${uid}:`,
+        error
+      );
       return null;
     }
-    if (this.common_service.fbApp == null) {
-      console.error('API Firebase non inizializzata.');
-      return null;
-    }
-
-    const dbUrl = 'https://amedevapps-47624-default-rtdb.europe-west1.firebasedatabase.app';
-    const db = getDatabase(this.common_service.fbApp, dbUrl);
-    const path = `users/${uid}/allowedProds`;
-    const dataRef = ref(db, path);
-
-    const snapshot = await get(dataRef);
-    if (snapshot.exists()) {
-      const result = snapshot.val() as Record<string, boolean>;
-      console.log('Prodotti recuperati:', result);
-      return result;
-    } else {
-      console.log('Nessun dato trovato per il path:', path);
-      return null;
-    }
-  } catch (error) {
-    console.error(`Errore nel recupero dei prodotti per l'utente ${uid}:`, error);
-    return null;
   }
-}
-
 
   //#endregion
 }
