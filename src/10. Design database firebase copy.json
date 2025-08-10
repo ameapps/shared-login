@@ -1,0 +1,17 @@
+{
+  "sharedLogin": {},
+  "users": {
+    "uid_aaa": {
+      "products": {
+        "sportTracker": { ...firebaseData },
+        "gameScopa": { ...firebaseData }
+      }
+    },
+    "uid_bbb": {
+      "products": {
+        "sportTracker": { ...firebaseData },
+        "gameScopa": { ...firebaseData }
+      }
+    }
+  }
+}
