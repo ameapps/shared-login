@@ -32,7 +32,7 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (!this.user.username || !this.user.password) {
       this.error = 'Inserisci nome utente e password.';
       return;
@@ -40,8 +40,8 @@ export class LoginComponent {
     this.common.lastLoggedUser = this.user;
     this.error = '';
     //01. Tento il login con le credenziali fornite
-    const fbLogin = this.fb_service.tryLogin(this.user);
-    if (!fbLogin) {
+    this.common.currentLoggedUser = await this.fb_service.tryLogin(this.user) ?? undefined;
+    if (!this.common.currentLoggedUser) {
       this.error = 'Credenziali non valide. Riprova.';
       return;
     }

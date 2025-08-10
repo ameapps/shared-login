@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { User } from '../../models/user.model';
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, UserCredential } from "firebase/auth";
 
 
 @Injectable({
@@ -33,15 +33,15 @@ export class FirebaseService {
   }
 
   /**Metodo che contatta firebase per sapere se le credenziali inserite sono corrette o meno */
-  async tryLogin(user: User): Promise<boolean> {
+  async tryLogin(user: User): Promise<UserCredential | undefined> {
     try {
       const auth = getAuth(this.common_service.fbApi);
-      const result = await signInWithEmailAndPassword(auth, user.email, user.password);
+      const result = await signInWithEmailAndPassword(auth, user.username, user.password);
       // Se l'autenticazione va a buon fine, restituisci true
-      return !!result.user;
+      return result;
     } catch (error) {
       console.error("Errore durante il tentativo di login:", error);
-      return false;
+      return undefined;
     }
   }
 
