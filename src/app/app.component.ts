@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
     }
     //02. Recupero la configurazione dell'applicazione
     const appConfig: DefaultConfig = await this.loadAppConfig();
+    this.common_service.appConfig = appConfig;
     console.log('Configurazione dell\'applicazione:', appConfig);
   }
 

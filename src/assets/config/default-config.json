@@ -1,3 +1,11 @@
 {
-    "ciao": "ciao"
+  "login": {},
+  "products": {
+    "show": {},
+    "add": {},
+    "edit": {}
+  },
+  "firebase": {
+    "dbUrl" : "https://amedevapps-47624-default-rtdb.europe-west1.firebasedatabase.app"
+  }
 }

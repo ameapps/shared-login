@@ -3,6 +3,7 @@ import { User } from '../../models/user.model';
 import { FirebaseConfig } from '../../models/firebaseConfig';
 import { UserCredential } from 'firebase/auth';
 import { FirebaseApp } from 'firebase/app';
+import { DefaultConfig } from '../../models/default.config.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class CommonService {
   fbApp: FirebaseApp | undefined;
   fbApiAnalytics: any;
   currentLoggedUser: UserCredential | undefined;
+  appConfig!: DefaultConfig;
 
 /*************  ✨ Windsurf Command ⭐  *************/
   /**

@@ -113,8 +113,7 @@ export class FirebaseService {
         return null;
       }
       //02. Recupero i prodotti dell'utente
-      const dbUrl =
-        'https://amedevapps-47624-default-rtdb.europe-west1.firebasedatabase.app';
+      const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       const data = await FirebaseHelper.getData(
         this.common_service.fbApp,
         'users/' + uid + '/allowedProds',
