@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { UserProduct } from '../../../shared/models/userProduct.model';
@@ -24,11 +24,10 @@ export class ProductsComponent implements OnInit {
   constructor(
     public common: CommonService,
     private router: Router,
-    private fb_service: FirebaseService
-  ) {
-    this.updateTags();
-    this.filterProducts();
-  }
+    private fb_service: FirebaseService,
+    private cdRef: ChangeDetectorRef
+  ) {}
+
   async ngOnInit(): Promise<void> {
     //01. Recupero quali sono i prodotti a cui l'utente ha accesso
     const allowedProds = await this.fb_service.getUserAllowedProducts(
@@ -41,7 +40,12 @@ export class ProductsComponent implements OnInit {
       this.common.lastLoggedUser.uId,
       allowedNames
     );
-    console.log('Prodotti utente:', products);
+    this.products = Object.values(products || {}) as UserProduct[];
+    //04. Aggiorno i tag e filtro i prodotti
+    this.updateTags();
+    this.filterProducts();
+    this.cdRef.detectChanges();
+    console.log('Prodotti utente:', this.products);
   }
 
   updateTags() {
