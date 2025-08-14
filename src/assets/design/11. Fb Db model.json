@@ -1,5 +1,6 @@
 {
   "sharedLogin": {
+    "devComment": "Data for the project SharedLogin only.",
     "auth": {
       "roles": {
         "admin": "Full DB CRUD access",

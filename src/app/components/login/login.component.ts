@@ -52,6 +52,8 @@ export class LoginComponent {
     this.common.lastLoggedUser.uId = loginResult.user.uid;
     this.common.lastLoggedUser.username = this.user.username;  
     this.common.lastLoggedUser.email = loginResult.user.email || '';
+    console.log('this.common.lastLoggedUser', this.common.lastLoggedUser);
+    //TODO: integrare le info dell'utente loggato recupendo quelle mancanti dal db
     //03. Accedo alla pagina dei prodotti
     this.router.navigate(['/products']);
   }
