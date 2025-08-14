@@ -1,9 +1,10 @@
 <div class="products-layout">
   <aside class="profile-menu">
     <div class="profile-pic">
-      <img [src]="common.lastLoggedUser.photoUrl || 'assets/default-profile.png'" alt="Foto profilo" />
+      <!-- <img [src]="common.lastLoggedUser.photoUrl || 'assets/default-profile.png'" alt="Foto profilo" /> -->
+      <img [src]="'assets/images/users/man.svg'" alt="Foto profilo" />
     </div>
-    <div class="profile-name">{{ common.lastLoggedUser.username || 'Utente' }}</div>
+    <div class="profile-name">{{ common?.lastLoggedUser?.username || 'Utente' }}</div>
     <button class="profile-btn" (click)="editProfile()">Modifica profilo</button>
     <button class="profile-btn delete" (click)="deleteProfile()">Elimina profilo</button>
   </aside>
