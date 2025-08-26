@@ -37,16 +37,20 @@
     </div>
   </div>
   <!-- Info utenti -->
-  <div class="profile-menu">
-    <div class="profile-pic">
-      <img [src]="common.lastLoggedUser.sex === 'male'? 'assets/images/users/man.svg' : 'assets/images/users/woman.svg'"
-        alt="Foto profilo" />
-    </div>
-    <div class="profile-name">{{ common?.lastLoggedUser?.username || 'Utente' }}</div>
-    <div class="row">
-      <button title="Edit profile" class="profile-btn" (click)="editProfile()">Edit</button>
-      <button title="Delete profile" class="profile-btn delete" (click)="deleteProfile()">Delete</button>
-      <button title="Add profile" class="profile-btn" (click)="addProfile()">Add</button>
+  <div class="profile-menu-container">
+
+    <div class="profile-menu" [style.width]="filteredProducts.length === 0 ? 'auto' : '100%'">
+      <div class="profile-pic">
+        <img
+          [src]="common.lastLoggedUser.sex === 'male'? 'assets/images/users/man.svg' : 'assets/images/users/woman.svg'"
+          alt="Foto profilo" />
+      </div>
+      <div class="profile-name">{{ common?.lastLoggedUser?.username || 'Utente' }}</div>
+      <div class="row">
+        <button title="Edit profile" class="profile-btn" (click)="editProfile()">Edit</button>
+        <button title="Delete profile" class="profile-btn delete" (click)="deleteProfile()">Delete</button>
+        <button title="Add profile" class="profile-btn" (click)="addProfile()">Add</button>
+      </div>
     </div>
   </div>
 </div>
