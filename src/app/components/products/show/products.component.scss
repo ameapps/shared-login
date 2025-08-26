@@ -119,6 +119,7 @@
     .profile-menu {
       position: relative;
       top: -2em;
+      left: 0.25em;
       background: var(--card-bg);
       border-radius: 16px;
       box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.1);
@@ -130,7 +131,6 @@
       display: flex;
       justify-content: center;
       padding: 2rem 1.5rem;
-      margin: 2em;
 
       .profile-pic img {
         width: 90px;
