@@ -30,15 +30,13 @@ export class ProductsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     //01. Recupero quali sono i prodotti a cui l'utente ha accesso
-    const allowedProds = await this.fb_service.getUserAllowedProducts(
+    const allowedNames = await this.fb_service.getUserAllowedProducts(
       this.common.lastLoggedUser.uId
     );
-    console.log('Allowed prods:', allowedProds);
-    const allowedNames = allowedProds ? Object.keys(allowedProds) : [];
     //02. Recupero i suoi prodotti
     const products = await this.fb_service.getUserProducts(
       this.common.lastLoggedUser.uId,
-      allowedNames
+      allowedNames ?? []
     );
     this.products = Object.values(products || {}) as UserProduct[];
     //04. Aggiorno i tag e filtro i prodotti
@@ -86,11 +84,11 @@ export class ProductsComponent implements OnInit {
     alert('Funzione modifica profilo non ancora implementata.');
   }
 
-addProfile() {
-  if (confirm('Sei sicuro di voler aggiungere un profilo?')) {
+  addProfile() {
+    if (confirm('Sei sicuro di voler aggiungere un profilo?')) {
       alert('Funzione ADD profilo non ancora implementata.');
     }
-}
+  }
 
   deleteProfile() {
     // Logica per eliminazione profilo (es. conferma)

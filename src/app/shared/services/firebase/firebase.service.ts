@@ -21,7 +21,7 @@ export class FirebaseService {
   constructor(
     private common_service: CommonService,
     private assets_service: AssetsService
-  ) {}
+  ) { }
 
   // #region helpers
 
@@ -95,7 +95,7 @@ export class FirebaseService {
   /**Metodo che recupera i prodotti di un utente dal real time DB di Firebase */
   async getUserAllowedProducts(
     uid: string
-  ): Promise<Record<string, boolean> | null> {
+  ): Promise<string[] | null> {
     try {
       console.log(`Recupero prodotti per l'utente: ${uid}`);
       //01. Controlli
@@ -110,14 +110,20 @@ export class FirebaseService {
         return null;
       }
       //02. Recupero i prodotti dell'utente
-      const data = await FirebaseHelper.getData(
+      const allowedProds = await FirebaseHelper.getData(
         this.common_service.fbApp,
         `users/${uid}/auth/allowedProds`,
         this.common_service.appConfig.firebase.dbUrl || ''
       );
-      console.info(`Prodotti recuperati per l'utente ${uid}:`, data);
+      console.info(`Prodotti recuperati per l'utente ${uid}:`, allowedProds);
+      // Filtra solo le chiavi con valore true
+      const allowedNames = allowedProds
+        ? Object.entries(allowedProds)
+          .filter(([_, value]) => value === true)
+          .map(([key]) => key)
+        : [];
 
-      return data;
+      return allowedNames;
     } catch (error) {
       console.error(
         `Errore nel recupero dei prodotti per l'utente ${uid}:`,

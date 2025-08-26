@@ -37,11 +37,18 @@
         "link": "https://ameapps.github.io/MomsDay2025/",
         "tags": ["app", "vanilla"]
       },
-      "wordleClone": {
+      "wordleCloneV1": {
         "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/2x.jpg?raw=true",
-        "name": "WordleClone",
+        "name": "wordleCloneV1",
         "description": "App che simula il gioco Wordle",
-        "link": "https://ameapps.github.io/WordleClone/",
+        "link": "https://ameapps.github.io/WordleCloneV1/",
+        "tags": ["game", "vanilla"]
+      },
+      "wordleCloneV2": {
+        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/2x.jpg?raw=true",
+        "name": "wordleCloneV2",
+        "description": "App che simula il gioco Wordle",
+        "link": "https://ameapps.github.io/WordleCloneV2/",
         "tags": ["game", "vanilla"]
       },
       "lovePurpose": {
@@ -74,7 +81,8 @@
           "gameScopa": true,
           "customCv": true,
           "momsDay": true,
-          "wordleClone": true,
+          "wordleCloneV1": true,
+          "wordleCloneV2": true,
           "lovePurpose": true,
           "workTools": true
         }
@@ -127,7 +135,8 @@
         "gameScopa": {},
         "customCv": {},
         "momsDay": {},
-        "wordleClone": {},
+        "wordleCloneV1": {},
+        "wordleCloneV2": {},
         "lovePurpose": {},
         "workTools": {}
       }
@@ -163,7 +172,8 @@
           "gameScopa": true,
           "customCv": true,
           "momsDay": true,
-          "wordleClone": true,
+          "wordleCloneV1": false,
+          "wordleCloneV2": true,
           "lovePurpose": true
         }
       },
@@ -172,7 +182,8 @@
         "gameScopa": {},
         "customCv": {},
         "momsDay": {},
-        "wordleClone": {},
+        "wordleCloneV1": {},
+        "wordleCloneV2": {},
         "lovePurpose": {}
       }
     },
@@ -189,7 +200,8 @@
           "gameScopa": true,
           "customCv": true,
           "momsDay": true,
-          "wordleClone": true,
+          "wordleCloneV1": false,
+          "wordleCloneV2": true,
           "lovePurpose": true
         }
       },
@@ -198,7 +210,8 @@
         "gameScopa": {},
         "customCv": {},
         "momsDay": {},
-        "wordleClone": {},
+        "wordleCloneV1": {},
+        "wordleCloneV2": {},
         "lovePurpose": {}
       }
     },
@@ -215,7 +228,8 @@
           "gameScopa": true,
           "customCv": true,
           "momsDay": true,
-          "wordleClone": true,
+          "wordleCloneV1": false,
+          "wordleCloneV2": true,
           "lovePurpose": true
         }
       },
@@ -224,7 +238,8 @@
         "gameScopa": {},
         "customCv": {},
         "momsDay": {},
-        "wordleClone": {},
+        "wordleCloneV1": {},
+        "wordleCloneV2": {},
         "lovePurpose": {}
       }
     }
