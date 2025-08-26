@@ -3,4 +3,5 @@ export class User {
     email = '';
     password = '';
     uId = '';
+    sex?: 'male' | 'female' = 'male'
 }

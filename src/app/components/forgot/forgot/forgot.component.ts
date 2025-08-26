@@ -21,7 +21,8 @@ export class ForgotComponent {
       email: email,
       username: '',
       password: '',
-      uId: ''
+      uId: '',
+      sex: 'male'
     };
     // Invia la richiesta di reset della password
     alert(`Link di reset inviato a ${email}`);

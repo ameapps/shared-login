@@ -86,6 +86,12 @@ export class ProductsComponent implements OnInit {
     alert('Funzione modifica profilo non ancora implementata.');
   }
 
+addProfile() {
+  if (confirm('Sei sicuro di voler aggiungere un profilo?')) {
+      alert('Funzione ADD profilo non ancora implementata.');
+    }
+}
+
   deleteProfile() {
     // Logica per eliminazione profilo (es. conferma)
     if (confirm('Sei sicuro di voler eliminare il profilo?')) {

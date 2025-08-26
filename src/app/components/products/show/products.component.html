@@ -1,47 +1,52 @@
-<div class="products-layout">
-  <aside class="profile-menu">
+<div class="container">
+  <!-- Lista prodotti -->
+  <div class="products-layout">
+    <div class="products-container" [style.width]="filteredProducts.length === 0 ? 'auto' : '100%'">
+      <h2 class="products-title">Prodotti disponibili</h2>
+      <!-- Filtro tag -->
+      <div class="tag-filter">
+        <span class="filter-label">Filtra per tag:</span>
+        <ng-container *ngFor="let tag of allTags">
+          <button type="button" class="tag-chip" [class.selected]="selectedTags.includes(tag)" (click)="toggleTag(tag)">
+            {{ tag }}
+          </button>
+        </ng-container>
+      </div>
+      <div class="products-grid">
+        <mat-card class="product-card add-card" (click)="addProduct()">
+          <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 180px;">
+            <span style="font-size: 3rem; color: var(--primary);">+</span>
+            <mat-card-content>
+              <h3 style="text-align: center; color: var(--primary-dark);">Aggiungi nuovo prodotto</h3>
+            </mat-card-content>
+          </div>
+        </mat-card>
+        <!-- Visualizzazione dei prodotti -->
+        <mat-card *ngFor="let product of filteredProducts" class="product-card" (click)="openProductLink(product.link)">
+          <img mat-card-image [src]="product.image" [alt]="product.name" />
+          <mat-card-content>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="product-tags">
+              <span *ngFor="let tag of product.tags" class="tag-chip">{{ tag }}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <!-- Info utenti -->
+  <div class="profile-menu">
     <div class="profile-pic">
-      <!-- <img [src]="common.lastLoggedUser.photoUrl || 'assets/default-profile.png'" alt="Foto profilo" /> -->
-      <img [src]="'assets/images/users/man.svg'" alt="Foto profilo" />
+      <img [src]="common.lastLoggedUser.sex === 'male'? 'assets/images/users/man.svg' : 'assets/images/users/woman.svg'"
+        alt="Foto profilo" />
     </div>
     <div class="profile-name">{{ common?.lastLoggedUser?.username || 'Utente' }}</div>
-    <button class="profile-btn" (click)="editProfile()">Modifica profilo</button>
-    <button class="profile-btn delete" (click)="deleteProfile()">Elimina profilo</button>
-  </aside>
-  <div class="products-container">
-    <h2 class="products-title">Prodotti disponibili</h2>
-    <!-- Filtro tag -->
-    <div class="tag-filter">
-      <span class="filter-label">Filtra per tag:</span>
-      <ng-container *ngFor="let tag of allTags">
-        <button type="button"
-          class="tag-chip"
-          [class.selected]="selectedTags.includes(tag)"
-          (click)="toggleTag(tag)">
-          {{ tag }}
-        </button>
-      </ng-container>
-    </div>
-    <div class="products-grid">
-      <mat-card class="product-card add-card" (click)="addProduct()">
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 180px;">
-          <span style="font-size: 3rem; color: var(--primary);">+</span>
-          <mat-card-content>
-            <h3 style="text-align: center; color: var(--primary-dark);">Aggiungi nuovo prodotto</h3>
-          </mat-card-content>
-        </div>
-      </mat-card>
-      <!-- Visualizzazione dei prodotti -->
-      <mat-card *ngFor="let product of filteredProducts" class="product-card" (click)="openProductLink(product.link)">
-        <img mat-card-image [src]="product.image" [alt]="product.name" />
-        <mat-card-content>
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.description }}</p>
-          <div class="product-tags">
-            <span *ngFor="let tag of product.tags" class="tag-chip">{{ tag }}</span>
-          </div>
-        </mat-card-content>
-      </mat-card>
+    <div class="row">
+      <button title="Edit profile" class="profile-btn" (click)="editProfile()">Edit</button>
+      <button title="Delete profile" class="profile-btn delete" (click)="deleteProfile()">Delete</button>
+      <button title="Add profile" class="profile-btn" (click)="addProfile()">Add</button>
     </div>
   </div>
 </div>

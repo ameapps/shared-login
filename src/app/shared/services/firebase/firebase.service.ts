@@ -49,7 +49,8 @@ export class FirebaseService {
         user.username,
         user.password
       );
-      // Se l'autenticazione va a buon fine, restituisci true
+      // Se tutti ok, chiedo dati utente 
+      //TODO: chiedere a FB dati utente 
       return result;
     } catch (error) {
       console.error('Errore durante il tentativo di login:', error);
