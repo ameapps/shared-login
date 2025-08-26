@@ -46,7 +46,7 @@
           [src]="common.lastLoggedUser.sex === 'male'? 'assets/images/users/man.svg' : 'assets/images/users/woman.svg'"
           alt="Foto profilo" />
       </div>
-      <div class="profile-name">{{ common?.lastLoggedUser?.username || 'Utente' }}</div>
+      <div class="profile-name">{{ common.lastLoggedUser.username || 'Utente' }}</div>
       <div class="row">
         <button title="Edit profile" class="profile-btn" (click)="editProfile()">Edit</button>
         <button title="Delete profile" class="profile-btn delete" (click)="deleteProfile()">Delete</button>
