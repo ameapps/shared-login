@@ -43,7 +43,7 @@ export class LoginComponent {
     this.error = '';
     //01. Tento il login con le credenziali fornite
     const loginResult = await this.fb_service.tryLogin(this.user);
-    this.common.setLoggedUser(loginResult ?? undefined);
+    this.common.saveUserSession(loginResult ?? undefined);
     console.info('Credenziali Firebase:', loginResult);
     if (!loginResult) {
       this.error = 'Credenziali non valide. Riprova.';
@@ -56,7 +56,8 @@ export class LoginComponent {
     //this.common.lastLoggedUser.sex = loginResult.user.sex ?? 'male'
     console.log('this.common.lastLoggedUser', this.common.lastLoggedUser);
     //TODO: integrare le info dell'utente loggato recupendo quelle mancanti dal db
-    //03. Accedo alla pagina dei prodotti
+    //03. Salvo la sessione dell'utente 
+    //04. Accedo alla pagina dei prodotti
     this.router.navigate(['/products']);
   }
 
