@@ -42,7 +42,11 @@ export class CommonService {
   saveUserSession(): boolean {
     try {
       if (this.lastLoggedUser) {
-        localStorage.setItem('lastLoggedUser', JSON.stringify(this.lastLoggedUser));
+        const session = {
+          ...this.lastLoggedUser,
+          loginTime: Date.now()
+        };
+        localStorage.setItem('lastLoggedUser', JSON.stringify(session));
       } else {
         localStorage.removeItem('lastLoggedUser');
       }

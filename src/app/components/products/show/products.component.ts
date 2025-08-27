@@ -26,24 +26,26 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private fb_service: FirebaseService,
     private cdRef: ChangeDetectorRef
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
-    //01. Recupero quali sono i prodotti a cui l'utente ha accesso
-    const allowedNames = await this.fb_service.getUserAllowedProducts(
-      this.common.lastLoggedUser?.uId ?? ''
-    );
-    //02. Recupero i suoi prodotti
-    const products = await this.fb_service.getUserProducts(
-      this.common.lastLoggedUser?.uId ?? '',
-      allowedNames ?? []
-    );
-    this.products = Object.values(products || {}) as UserProduct[];
-    //04. Aggiorno i tag e filtro i prodotti
-    this.updateTags();
-    this.filterProducts();
-    this.cdRef.detectChanges();
-    console.log('Prodotti utente:', this.products);
+    setTimeout(async () => {
+      //01. Recupero quali sono i prodotti a cui l'utente ha accesso
+      const allowedNames = await this.fb_service.getUserAllowedProducts(
+        this.common.lastLoggedUser?.uId ?? ''
+      );
+      //02. Recupero i suoi prodotti
+      const products = await this.fb_service.getUserProducts(
+        this.common.lastLoggedUser?.uId ?? '',
+        allowedNames ?? []
+      );
+      this.products = Object.values(products || {}) as UserProduct[];
+      //04. Aggiorno i tag e filtro i prodotti
+      this.updateTags();
+      this.filterProducts();
+      this.cdRef.detectChanges();
+      console.log('Prodotti utente:', this.products);
+    }, 1000);
   }
 
   updateTags() {

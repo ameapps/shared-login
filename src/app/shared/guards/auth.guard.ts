@@ -1,14 +1,29 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { CommonService } from '../services/common/common.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const commonService = inject(CommonService);
   const router = inject(Router);
-  const lastLoggedUser = commonService.getUserSession();  
-  // Controlla che l'utente sia loggato e abbia un uId valido
-  if (!lastLoggedUser || !lastLoggedUser.uId) {
-    router.navigate(['/']); // redirect to login
+
+  const userJson = localStorage.getItem('lastLoggedUser');
+  let isLoggedIn = false;
+  let loginTime = 0;
+  if (userJson) {
+    try {
+      const user = JSON.parse(userJson);
+      isLoggedIn = !!user.uId;
+      loginTime = user.loginTime || 0;
+    } catch {
+      isLoggedIn = false;
+      loginTime = 0;
+    }
+  }
+  const now = Date.now();
+  const ONE_HOUR = 60 * 60 * 1000;
+  const isTimeValid = (now - loginTime) < ONE_HOUR;
+  console.log('time passed', now - loginTime);
+  if (!isLoggedIn || !loginTime || !isTimeValid) {
+    localStorage.removeItem('lastLoggedUser');
+    router.navigate(['/']);
     return false;
   }
   return true;
