@@ -10,56 +10,56 @@
     },
     "products": {
       "customCv": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/CustomCv/4x.png?raw=true",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/57330d3792ac6f263734a5d12242622b7614d71a/src/assets/images/products/CustomCv/vect.svg",
         "name": "CustomCv",
         "description": "App web che mostra il mostra il CV personalizzato",
         "link": "https://ameapps.github.io/CustomCv/#",
         "tags": ["app", "angular"]
       },
       "sportTracker": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/SportTracker/1x.png?raw=true",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/SportTracker/vect.svg",
         "name": "SportTracker",
         "description": "App per il monitoraggio delle attività sportive e del cibo assunto",
         "link": "https://ameapps.github.io/SportTracker/#/menu/homepage",
         "tags": ["app", "angular"]
       },
       "gameScopa": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/GameScopa/1x.png?raw=true",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/GameScopa/vect.svg",
         "name": "GameScopa",
         "description": "Celebre gioco di carte italiano",
         "link": "https://ameapps.github.io/GameScopa",
         "tags": ["game", "ionic", "angular"]
       },
       "momsDay": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/MomsDay/2025/1x.png?raw=true",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/MomsDay/2025/vect.svg",
         "name": "MomsDay",
         "description": "App per la celebrazione della giornata della mamma",
         "link": "https://ameapps.github.io/MomsDay2025/",
         "tags": ["app", "vanilla"]
       },
       "wordleCloneV1": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/2x.jpg?raw=true",
-        "name": "wordleCloneV1",
+        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/vect.png?raw=true",
+        "name": "WordleCloneV1",
         "description": "App che simula il gioco Wordle",
         "link": "https://ameapps.github.io/WordleCloneV1/",
         "tags": ["game", "vanilla"]
       },
       "wordleCloneV2": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/2x.jpg?raw=true",
-        "name": "wordleCloneV2",
+        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/vect.png?raw=true",
+        "name": "WordleCloneV2",
         "description": "App che simula il gioco Wordle",
         "link": "https://ameapps.github.io/WordleCloneV2/",
         "tags": ["game", "vanilla"]
       },
       "lovePurpose": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/LovePurpose/1x.png?raw=true",
-        "name": "lovePurpose",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/LovePurpose/vect.svg",
+        "name": "LovePurpose",
         "description": "App per dichiarare il proprio amore ad una ragazza",
         "link": "https://ameapps.github.io/LovePurpose/",
         "tags": ["app", "vanilla"]
       },
       "workTools": {
-        "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WorkTools/1x.png?raw=true",
+        "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/WorkTools/vect.svg",
         "name": "WorkTools",
         "description": "App che propone una serie di tools da usare sul lavoro",
         "link": "https://ameapps.github.io/WorkToolsV2.0/",
