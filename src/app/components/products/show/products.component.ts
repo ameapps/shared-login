@@ -31,11 +31,11 @@ export class ProductsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     //01. Recupero quali sono i prodotti a cui l'utente ha accesso
     const allowedNames = await this.fb_service.getUserAllowedProducts(
-      this.common.lastLoggedUser.uId
+      this.common.lastLoggedUser?.uId ?? ''
     );
     //02. Recupero i suoi prodotti
     const products = await this.fb_service.getUserProducts(
-      this.common.lastLoggedUser.uId,
+      this.common.lastLoggedUser?.uId ?? '',
       allowedNames ?? []
     );
     this.products = Object.values(products || {}) as UserProduct[];

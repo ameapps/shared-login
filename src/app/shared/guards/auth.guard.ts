@@ -5,8 +5,9 @@ import { CommonService } from '../services/common/common.service';
 export const authGuard: CanActivateFn = (route, state) => {
   const commonService = inject(CommonService);
   const router = inject(Router);
+  const lastLoggedUser = commonService.getUserSession();  
   // Controlla che l'utente sia loggato e abbia un uId valido
-  if (!commonService.lastLoggedUser || !commonService.lastLoggedUser.uId) {
+  if (!lastLoggedUser || !lastLoggedUser.uId) {
     router.navigate(['/']); // redirect to login
     return false;
   }

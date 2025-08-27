@@ -10,7 +10,7 @@ import { DefaultConfig } from '../../models/default.config.model';
 })
 export class CommonService {
   lastRegisteredUser!: User;
-  lastLoggedUser!: User;
+  lastLoggedUser?: User;
   lastforgotPswRequest!: User;
   fbUserConfig!: FirebaseConfig;
   fbApp: FirebaseApp | undefined;
@@ -21,6 +21,35 @@ export class CommonService {
   constructor() {
   }
 
-  saveUserSession(user: UserCredential | undefined) {
+  getUserSession(): User {
+    // Recupera lo stato di login da localStorage all'avvio
+    const userJson = localStorage.getItem('lastLoggedUser');
+    if (userJson) {
+      try {
+        this.lastLoggedUser = JSON.parse(userJson);
+      } catch {
+        this.lastLoggedUser = undefined;
+      }
+    }
+    // Return the user or throw an error if not found
+    if (this.lastLoggedUser) {
+      return this.lastLoggedUser;
+    } else {
+      throw new Error('No user session found');
+    }
+  }
+
+  saveUserSession(): boolean {
+    try {
+      if (this.lastLoggedUser) {
+        localStorage.setItem('lastLoggedUser', JSON.stringify(this.lastLoggedUser));
+      } else {
+        localStorage.removeItem('lastLoggedUser');
+      }
+      return true;
+    } catch (error) {
+      console.error('Errore nel salvataggio della sessione utente:', error);
+      return false;
+    }
   }
 }
