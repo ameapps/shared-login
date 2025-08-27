@@ -18,14 +18,12 @@ export class CommonService {
   currentLoggedUser: UserCredential | undefined;
   appConfig!: DefaultConfig;
 
-/*************  ✨ Windsurf Command ⭐  *************/
   /**
    * Constructor
    * @description Recupera lo stato di login da localStorage all'avvio del servizio
    *              e lo setta come currentLoggedUser. Se non riesce a parseare il valore
    *              lo setta a undefined.
-
-/*******  2287d0f9-79ee-4460-989f-248ba0848d11  *******/
+   */
   constructor() {
     // Recupera lo stato di login da localStorage all'avvio
     const userJson = localStorage.getItem('currentLoggedUser');
