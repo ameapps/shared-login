@@ -30,8 +30,11 @@
           <mat-card-content>
             <h3>{{ product.name }}</h3>
             <p>{{ product.description }}</p>
-            <div class="product-tags">
-              <span *ngFor="let tag of product.tags" class="tag-chip">{{ tag }}</span>
+            <div class="products">
+              <div class="product-tags">
+                <span *ngFor="let tag of product.tags" class="tag-chip">{{ tag }}</span>
+              </div>
+              <button title="Edit profile" class="product-crud" (click)="editProfile()">Edit</button>
             </div>
           </mat-card-content>
         </mat-card>
