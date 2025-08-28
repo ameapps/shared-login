@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UserProduct } from '../../../../shared/models/userProduct.model';
+import { UserProduct } from '../../../shared/models/userProduct.model';
 
 @Component({
-  selector: 'app-add-product',
+  selector: 'app-crud-product',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss'
+  templateUrl: './crud-product.component.html',
+  styleUrl: './crud-product.component.scss'
 })
-export class AddProductComponent {
+export class CrudProductComponent {
   product: UserProduct = new UserProduct();
   success = false;
 
