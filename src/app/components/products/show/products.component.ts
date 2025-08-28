@@ -103,6 +103,11 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  editProduct($event: any, product: UserProduct) {
+    $event.stopPropagation();
+    this.router.navigate(['/products/edit', product]);
+  }
+
   logout() {
     if (confirm('Sei sicuro di voler effettuare il logout?')) {
       this.common.lastLoggedUser = undefined;

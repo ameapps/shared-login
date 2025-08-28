@@ -34,7 +34,7 @@
               <div class="product-tags">
                 <span *ngFor="let tag of product.tags" class="tag-chip">{{ tag }}</span>
               </div>
-              <button title="Edit profile" class="product-crud" (click)="editProfile()">Edit</button>
+              <button title="Edit product" class="product-crud" (click)="editProduct($event, product)">Edit</button>
             </div>
           </mat-card-content>
         </mat-card>
