@@ -5,6 +5,7 @@ import { lastValueFrom } from 'rxjs';
 import { DefaultConfig } from '../../models/default.config.model';
 import { FirebaseConfig } from '../../models/firebaseConfig';
 import { CommonService } from '../common/common.service';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AppService {
 
   constructor(
     private common: CommonService,
+    private login_service: LoginService,
     private fb_service: FirebaseService,
     private http_service: HttpClient
   ) { }
@@ -28,6 +30,7 @@ export class AppService {
         console.error('Login fallito.');
         return;
       }
+      await this.login_service.includeUserExtra(loginResult);
       this.hasAppInitialized = true;
     } catch (error) {
       console.error('Errore durante l\'inizializzazione dell\'app:', error);
