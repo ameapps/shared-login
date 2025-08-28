@@ -4,6 +4,9 @@ import { FirebaseConfig } from '../../models/firebaseConfig';
 import { UserCredential } from 'firebase/auth';
 import { FirebaseApp } from 'firebase/app';
 import { DefaultConfig } from '../../models/default.config.model';
+import { FirebaseService } from '../firebase/firebase.service';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +20,13 @@ export class CommonService {
   fbApiAnalytics: any;
   appConfig!: DefaultConfig;
 
-
-  constructor() {
+  constructor(
+    private http_service: HttpClient
+  ) {
   }
 
   getUserSession(): User {
-    // Recupera lo stato di login da localStorage all'avvio
+    // Recupero lo stato di login da localStorage all'avvio
     const userJson = localStorage.getItem('lastLoggedUser');
     if (userJson) {
       try {

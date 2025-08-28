@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonService } from './shared/services/common/common.service';
 import { lastValueFrom } from 'rxjs';
 import { DefaultConfig } from './shared/models/default.config.model';
+import { AppService } from './shared/services/app/app.service';
 
 @Component({
   selector: 'app-root',
@@ -26,33 +27,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private common_service: CommonService,
-    private fb_service: FirebaseService,
-    private http_service: HttpClient
-  ) {}
+    private app_service: AppService
+  ) { }
 
   async ngOnInit() {
-    // 01. Recupero la configurazione Firebase
-    const fbConfig: FirebaseConfig | undefined =
-      await this.fb_service.getFirebaseConfig('ame.dev.apps');
-    if (!fbConfig) {
-      console.error('Errore nel recupero della configurazione Firebase.');
-      return;
-    }
-    const fbApi: boolean = this.fb_service.startFbApi(fbConfig);
-    if (!fbApi) {
-      console.error("Errore nell'inizializzazione dell'API Firebase.");
-      return;
-    }
-    //02. Recupero la configurazione dell'applicazione
-    const appConfig: DefaultConfig = await this.loadAppConfig();
-    this.common_service.appConfig = appConfig;
-  }
-
-  async loadAppConfig(): Promise<DefaultConfig> {
-    const value = await lastValueFrom(
-      this.http_service.get<DefaultConfig>('assets/config/default-config.json')
-    );
-    return value;
+    await this.app_service.initApp();
   }
 
   togglePasswordVisibility() {

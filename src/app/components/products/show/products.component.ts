@@ -5,6 +5,7 @@ import { UserProduct } from '../../../shared/models/userProduct.model';
 import { CommonService } from '../../../shared/services/common/common.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../../shared/services/firebase/firebase.service';
+import { AppService } from '../../../shared/services/app/app.service';
 
 @Component({
   selector: 'app-products',
@@ -23,29 +24,29 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     public common: CommonService,
+    private app_service: AppService,
     private router: Router,
     private fb_service: FirebaseService,
     private cdRef: ChangeDetectorRef
   ) { }
 
   async ngOnInit(): Promise<void> {
-    setTimeout(async () => {
-      //01. Recupero quali sono i prodotti a cui l'utente ha accesso
-      const allowedNames = await this.fb_service.getUserAllowedProducts(
-        this.common.lastLoggedUser?.uId ?? ''
-      );
-      //02. Recupero i suoi prodotti
-      const products = await this.fb_service.getUserProducts(
-        this.common.lastLoggedUser?.uId ?? '',
-        allowedNames ?? []
-      );
-      this.products = Object.values(products || {}) as UserProduct[];
-      //04. Aggiorno i tag e filtro i prodotti
-      this.updateTags();
-      this.filterProducts();
-      this.cdRef.detectChanges();
-      console.log('Prodotti utente:', this.products);
-    }, 1000);
+    if (!this.app_service.hasAppInitialized) await this.app_service.initApp();
+    //01. Recupero quali sono i prodotti a cui l'utente ha accesso
+    const allowedNames = await this.fb_service.getUserAllowedProducts(
+      this.common.lastLoggedUser?.uId ?? ''
+    );
+    //02. Recupero i suoi prodotti
+    const products = await this.fb_service.getUserProducts(
+      this.common.lastLoggedUser?.uId ?? '',
+      allowedNames ?? []
+    );
+    this.products = Object.values(products || {}) as UserProduct[];
+    //04. Aggiorno i tag e filtro i prodotti
+    this.updateTags();
+    this.filterProducts();
+    this.cdRef.detectChanges();
+    console.log('Prodotti utente:', this.products);
   }
 
   updateTags() {
