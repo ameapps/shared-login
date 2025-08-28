@@ -99,4 +99,12 @@ export class ProductsComponent implements OnInit {
       alert('Funzione elimina profilo non ancora implementata.');
     }
   }
+
+  logout() {
+    if (confirm('Sei sicuro di voler effettuare il logout?')) {
+      this.common.lastLoggedUser = undefined;
+      localStorage.removeItem('lastLoggedUser');
+      this.router.navigate(['/']);
+    }
+  }
 }

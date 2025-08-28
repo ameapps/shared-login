@@ -172,6 +172,10 @@
           background: var(--primary-dark);
         }
 
+        &.warning {
+          background-color: var(--warning) !important;
+        }
+
         &.delete {
           background: var(--error);
 
