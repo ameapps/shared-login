@@ -105,7 +105,7 @@ export class ProductsComponent implements OnInit {
 
   editProduct($event: any, product: UserProduct) {
     $event.stopPropagation();
-    this.router.navigate(['/products/edit', product]);
+    this.router.navigate(['/products/edit']);
   }
 
   logout() {
