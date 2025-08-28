@@ -1,26 +1,27 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserProduct } from '../../../shared/models/userProduct.model';
 import { CommonService } from '../../../shared/services/common/common.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../../shared/services/firebase/firebase.service';
 import { AppService } from '../../../shared/services/app/app.service';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, LoaderComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
   products: UserProduct[] = [];
-
-  // Filtro tag
   allTags: string[] = [];
   selectedTags: string[] = [];
   filteredProducts: UserProduct[] = [];
+  hasLoadedProds = false; // aggiungi questa riga
 
   constructor(
     public common: CommonService,
@@ -33,6 +34,7 @@ export class ProductsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if (!this.app_service.hasAppInitialized) await this.app_service.initApp();
     //01. Recupero quali sono i prodotti a cui l'utente ha accesso
+    this.hasLoadedProds = false; // mostra loader
     const allowedNames = await this.fb_service.getUserAllowedProducts(
       this.common.lastLoggedUser?.uId ?? ''
     );
@@ -46,6 +48,7 @@ export class ProductsComponent implements OnInit {
     this.updateTags();
     this.filterProducts();
     this.cdRef.detectChanges();
+    this.hasLoadedProds = true; 
     console.log('Prodotti utente:', this.products);
   }
 
