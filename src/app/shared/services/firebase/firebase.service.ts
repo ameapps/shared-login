@@ -13,11 +13,13 @@ import {
 } from 'firebase/auth';
 import { FirebaseHelper } from '../../helpers/firebaseHelper';
 import { getDatabase, ref, get } from 'firebase/database';
+import { UserExtras } from '../../models/user.extras.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+
   constructor(
     private common_service: CommonService,
     private assets_service: AssetsService
@@ -91,6 +93,28 @@ export class FirebaseService {
   // #endregion
 
   // #region service
+
+  /**Metodo che recupera le info aggiuntive sull'utente dal db, che firebase NON passa per default */
+  async getUserExtras(uid: string): Promise<UserExtras | undefined> {
+    try {
+      //01. Controlli
+      if (!this.common_service.fbApp) {
+        console.error('API Firebase non inizializzata.');
+        return undefined;
+      }
+      //02. Recupero le info extra 
+      const userInfo = await FirebaseHelper.getData(
+        this.common_service.fbApp,
+        `users/${uid}/info`,
+        this.common_service.appConfig.firebase.dbUrl || ''
+      ) as UserExtras;
+
+      return userInfo;
+    } catch (error) {
+      console.error("Errore nel recupero delle info dell'utente:", error);
+      return undefined;
+    }
+  }
 
   /**Metodo che recupera i prodotti di un utente dal real time DB di Firebase */
   async getUserAllowedProducts(

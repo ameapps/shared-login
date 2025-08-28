@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 import { CommonService } from '../../shared/services/common/common.service';
 import { FirebaseService } from '../../shared/services/firebase/firebase.service';
+import { LoginService } from '../../shared/services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,49 +15,18 @@ import { FirebaseService } from '../../shared/services/firebase/firebase.service
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  user: User = {
-    username: '',
-    email: '',
-    password: '',
-    uId: '',
-    sex: 'male'
-  };
-  error = '';
-  showPassword = false;
 
   constructor(
+    public login_service: LoginService,
     private router: Router,
-    public common: CommonService,
-    private fb_service: FirebaseService
   ) {}
 
   togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
+    this.login_service.showPassword = !this.login_service.showPassword;
   }
 
   async onSubmit() {
-    if (!this.user.username || !this.user.password) {
-      this.error = 'Inserisci nome utente e password.';
-      return;
-    }
-    this.common.lastLoggedUser = this.user;
-    this.error = '';
-    //01. Tento il login con le credenziali fornite
-    const loginResult = await this.fb_service.tryLogin(this.user);
-    console.info('Credenziali Firebase:', loginResult);
-    if (!loginResult) {
-      this.error = 'Credenziali non valide. Riprova.';
-      return;
-    }
-    //02. Imposto le credenziali dell'utente appena ricevute 
-    this.common.lastLoggedUser.uId = loginResult.user.uid;
-    this.common.lastLoggedUser.username = this.user.username;  
-    this.common.lastLoggedUser.email = loginResult.user.email || '';
-    //TODO: integrare le info dell'utente loggato recupendo quelle mancanti dal db
-    //this.common.lastLoggedUser.sex = loginResult.user.sex ?? 'male'
-    console.log('this.common.lastLoggedUser', this.common.lastLoggedUser);
-    //03. Salvo la sessione dell'utente
-    this.common.saveUserSession();
+    await this.login_service.onSubmit();
     //04. Accedo alla pagina dei prodotti
     this.router.navigate(['/products']);
   }

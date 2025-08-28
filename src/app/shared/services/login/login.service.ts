@@ -1,9 +1,55 @@
 import { Injectable } from '@angular/core';
+import { CommonService } from '../common/common.service';
+import { FirebaseService } from '../firebase/firebase.service';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+  user: User = {
+    username: '',
+    email: '',
+    password: '',
+    uId: '',
+    sex: 'male'
+  };
+  error = '';
+  showPassword = false;
+
+  constructor(
+    public common: CommonService,
+    private fb_service: FirebaseService) { }
+
+  async onSubmit() {
+    try {
+      if (!this.user.username || !this.user.password) {
+        this.error = 'Inserisci nome utente e password.';
+        return;
+      }
+      this.common.lastLoggedUser = this.user;
+      this.error = '';
+      //01. Tento il login con le credenziali fornite
+      const loginResult = await this.fb_service.tryLogin(this.user);
+      console.info('Credenziali Firebase:', loginResult);
+      if (!loginResult) {
+        this.error = 'Credenziali non valide. Riprova.';
+        return;
+      }
+      //02. Imposto le credenziali dell'utente appena ricevute 
+      this.common.lastLoggedUser.uId = loginResult.user.uid;
+      this.common.lastLoggedUser.username = this.user.username;
+      this.common.lastLoggedUser.email = loginResult.user.email || '';
+      const userInfo = await this.fb_service.getUserExtras(loginResult.user.uid);
+      //03. Integro le info nei dati utente
+      this.common.lastLoggedUser.sex = userInfo?.sex ?? 'male';
+      this.common.lastLoggedUser.username = userInfo?.username ?? this.user.username;
+      console.log('this.common.lastLoggedUser', this.common.lastLoggedUser);
+      //03. Salvo la sessione dell'utente
+      this.common.saveUserSession();
+    } catch (error) {
+      console.error('Errore durante il login:', error);
+    }
+  }
 }
