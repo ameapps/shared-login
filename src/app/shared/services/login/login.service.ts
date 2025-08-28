@@ -13,7 +13,8 @@ export class LoginService {
     email: '',
     password: '',
     uId: '',
-    sex: 'male'
+    sex: 'male',
+    icon: ''
   };
   error = '';
   showPassword = false;
@@ -24,7 +25,7 @@ export class LoginService {
 
   async onSubmit() {
     try {
-      if (!this.user.username || !this.user.password) {
+      if (!this.user.email || !this.user.password) {
         this.error = 'Inserisci nome utente e password.';
         return;
       }
@@ -44,6 +45,7 @@ export class LoginService {
       const userInfo = await this.fb_service.getUserExtras(loginResult.user.uid);
       //03. Integro le info nei dati utente
       this.common.lastLoggedUser.sex = userInfo?.sex ?? 'male';
+      this.common.lastLoggedUser.icon = userInfo?.icon ?? (userInfo?.sex === 'male' ? 'man-default' : 'woman-default');
       this.common.lastLoggedUser.username = userInfo?.username ?? this.user.username;
       console.log('this.common.lastLoggedUser', this.common.lastLoggedUser);
       //03. Salvo la sessione dell'utente

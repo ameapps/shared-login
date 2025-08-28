@@ -72,7 +72,7 @@
       "info": {
         "username": "ste",
         "sex": "male",
-        "icon": null
+        "icon": "man-default"
       },
       "auth": {
         "role": "admin",
@@ -145,25 +145,27 @@
       "info": {
         "username": "flo",
         "sex": "female",
-        "icon": null
+        "icon": "woman-default"
       },
       "auth": {
         "role": "user",
         "allowedProds": {
           "momsDay": true,
-          "lovePurpose": true
+          "lovePurpose": true,
+          "wordleCloneV2": true
         }
       },
       "products": {
         "momsDay": {},
-        "lovePurpose": {}
+        "lovePurpose": {},
+        "wordleCloneV2": {}
       }
     },
     "vYmKo60fVbYuqnsEOFWRQSSY2Pj1": {
       "info": {
         "username": "ale",
         "sex": "male",
-        "icon": null
+        "icon": "man-default"
       },
       "auth": {
         "role": "user",
@@ -191,7 +193,7 @@
       "info": {
         "username": "dav",
         "sex": "male",
-        "icon": null
+        "icon": "man-default"
       },
       "auth": {
         "role": "supervisor",
@@ -219,7 +221,7 @@
       "info": {
         "username": "elp",
         "sex": "female",
-        "icon": null
+        "icon": "woman-elp"
       },
       "auth": {
         "role": "user",

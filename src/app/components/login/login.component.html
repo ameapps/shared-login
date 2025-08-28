@@ -3,13 +3,13 @@
     <h2>Accedi</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="input-group">
-        <label for="username">Nome utente</label>
+        <label for="email">Email</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="login_service.user.username"
-          placeholder="Inserisci il nome utente"
+          id="email"
+          name="email"
+          [(ngModel)]="login_service.user.email"
+          placeholder="Inserisci l'email"
           required
         />
       </div>

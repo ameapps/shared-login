@@ -42,7 +42,7 @@
       [style.left]="filteredProducts.length === 0 ? '0.25em' : '1em'">
       <div class="profile-pic">
         <img
-          [src]="common.lastLoggedUser?.sex === 'male'? 'assets/images/users/man.svg' : 'assets/images/users/woman.svg'"
+          [src]="'assets/images/users/' + common.lastLoggedUser?.icon + '.svg'"
           alt="Foto profilo" />
       </div>
       <div class="profile-name">{{ common.lastLoggedUser?.username || 'Utente' }}</div>

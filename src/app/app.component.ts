@@ -33,18 +33,4 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     await this.app_service.initApp();
   }
-
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-  }
-
-  onSubmit() {
-    if (!this.username || !this.password) {
-      this.error = 'Inserisci nome utente e password.';
-      return;
-    }
-    this.error = '';
-    // Qui puoi aggiungere la logica di autenticazione
-    alert(`Benvenuto, ${this.username}!`);
-  }
 }

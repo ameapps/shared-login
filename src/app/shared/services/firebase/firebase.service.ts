@@ -48,7 +48,7 @@ export class FirebaseService {
       const auth = getAuth(this.common_service.fbApp);
       const result = await signInWithEmailAndPassword(
         auth,
-        user.username,
+        user.email,
         user.password
       );
       // Se tutti ok, chiedo dati utente 
