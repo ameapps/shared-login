@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserProduct } from '../../../shared/models/userProduct.model';
@@ -11,12 +11,19 @@ import { UserProduct } from '../../../shared/models/userProduct.model';
   styleUrl: './crud-product.component.scss'
 })
 export class CrudProductComponent {
-  product: UserProduct = new UserProduct();
-  success = false;
 
-  // Tag di default
+  // #region variables
+  @Input() _product: UserProduct | undefined;
+  get product(): UserProduct {
+    if (!this._product) {
+      this._product = new UserProduct();
+    }
+    return this._product;
+  }
+  success = false;
   selectedTags: string[] = ['gioco', 'app'];
   customTag: string = '';
+  // #endregion
 
   toggleDefaultTag(tag: string, event: any) {
     if (event.target.checked) {
@@ -44,9 +51,10 @@ export class CrudProductComponent {
     // Associa i tag al prodotto
     this.product.tags = [...this.selectedTags];
     // Qui puoi aggiungere la logica per salvare il prodotto
+    console.log('prodotto', this._product)
     this.success = true;
     setTimeout(() => (this.success = false), 2000);
-    this.product = new UserProduct();
+    this._product = new UserProduct();
     this.selectedTags = [];
   }
 }
