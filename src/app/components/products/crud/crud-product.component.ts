@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserProduct } from '../../../shared/models/userProduct.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud-product',
@@ -10,7 +11,7 @@ import { UserProduct } from '../../../shared/models/userProduct.model';
   templateUrl: './crud-product.component.html',
   styleUrl: './crud-product.component.scss'
 })
-export class CrudProductComponent {
+export class CrudProductComponent implements OnInit {
 
   // #region variables
   @Input() _product: UserProduct | undefined;
@@ -23,7 +24,17 @@ export class CrudProductComponent {
   success = false;
   selectedTags: string[] = ['gioco', 'app'];
   customTag: string = '';
+  pageTitle = 'Aggiungi nuovo prodotto';
   // #endregion
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    // Se la rotta contiene 'edit', cambia il titolo
+    if (this.router.url.includes('/products/edit')) {
+      this.pageTitle = 'Modifica prodotto';
+    }
+  }
 
   toggleDefaultTag(tag: string, event: any) {
     if (event.target.checked) {
