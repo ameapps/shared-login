@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   allTags: string[] = [];
   selectedTags: string[] = [];
   filteredProducts: UserProduct[] = [];
-  hasLoadedProds = false; // aggiungi questa riga
+  hasLoadedProds = false; 
 
   constructor(
     public common: CommonService,
@@ -77,11 +77,18 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  openProductLink(link: string) {
-    window.open(link, '_blank');
+  openProductLink(product: UserProduct): void {
+    if (product == null) {
+      console.warn('No selected project');
+      return;
+    }
+    if (product.link) {
+      this.router.navigate(['/products/edit']);  
+    }
   }
 
   addProduct() {
+    this.common.selectedProduct = new UserProduct();
     this.router.navigate(['/products/add']);
   }
 
@@ -105,6 +112,7 @@ export class ProductsComponent implements OnInit {
 
   editProduct($event: any, product: UserProduct) {
     $event.stopPropagation();
+    this.common.selectedProduct = { ...product };
     this.router.navigate(['/products/edit']);
   }
 

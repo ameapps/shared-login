@@ -7,6 +7,7 @@ import { DefaultConfig } from '../../models/default.config.model';
 import { FirebaseService } from '../firebase/firebase.service';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { UserProduct } from '../../models/userProduct.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class CommonService {
   fbApp: FirebaseApp | undefined;
   fbApiAnalytics: any;
   appConfig!: DefaultConfig;
+  selectedProduct?: UserProduct;
 
   constructor(
     private http_service: HttpClient

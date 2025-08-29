@@ -1,4 +1,4 @@
-<div class="add-product-container">
+<div class="add-product-container" *ngIf="common.selectedProduct">
   <div class="add-product-card">
     <h2>{{ pageTitle }}</h2>
     <form (ngSubmit)="onSubmit()" #addProductForm="ngForm">
@@ -9,7 +9,7 @@
           type="text"
           id="name"
           name="name"
-          [(ngModel)]="product.name"
+          [(ngModel)]="common.selectedProduct.name"
           placeholder="Nome prodotto"
           required
         />
@@ -21,7 +21,7 @@
           type="text"
           id="description"
           name="description"
-          [(ngModel)]="product.description"
+          [(ngModel)]="common.selectedProduct.description"
           placeholder="Descrizione"
           required
         />
@@ -33,7 +33,7 @@
           type="url"
           id="image"
           name="image"
-          [(ngModel)]="product.image"
+          [(ngModel)]="common.selectedProduct.image"
           placeholder="URL immagine"
         />
       </div>

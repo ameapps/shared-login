@@ -116,6 +116,7 @@
               transition: background 0.2s;
               position: relative;
               z-index: 99999;
+              max-height: 2em;
             }
 
             .tag-chip {
