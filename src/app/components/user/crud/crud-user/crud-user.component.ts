@@ -34,9 +34,8 @@ export class CrudUserComponent implements OnInit {
   }
 
   onSubmit() {
-    // Qui puoi aggiungere la logica per salvare o aggiornare l'utente
+    // Salvataggio o aggiornamento dell'utente
     if (this.pageTitle === 'Aggiungi nuovo utente') {
-      // Logica per aggiunta utente
       console.log('Nuovo utente:', this.user);
     } else {
       // Logica per modifica utente

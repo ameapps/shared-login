@@ -120,4 +120,13 @@ export class ProductsComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+
+  deleteProduct($event: any, product: UserProduct) {
+    $event.stopPropagation();
+    if (confirm(`Sei sicuro di voler eliminare il prodotto "${product.name}"?`)) {
+      // Logica per eliminare il prodotto
+      // Esempio: this.fb_service.deleteUserProduct(product);
+      alert('Funzione elimina prodotto non ancora implementata.');
+    }
+  }
 }
