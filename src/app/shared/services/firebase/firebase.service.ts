@@ -219,7 +219,7 @@ export class FirebaseService {
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       await FirebaseHelper.setProperties(
         this.common_service.fbApp,
-        `sharedLogin/products/${selectedProduct.name}`,
+        `sharedLogin/products/${selectedProduct.id}`,
         selectedProduct,
         dbUrl
       );

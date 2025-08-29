@@ -21,7 +21,7 @@ export class CrudProductComponent implements OnInit {
   customTag: string = '';
   pageTitle = 'Aggiungi nuovo prodotto';
   get isEdit(): boolean {
-    return this.router.url.includes('/products/edit');
+    return this.router.url.includes('edit');
   }
   // #endregion
 

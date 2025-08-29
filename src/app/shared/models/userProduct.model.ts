@@ -1,4 +1,6 @@
 export class UserProduct {
+  /**Id del prodotto */
+  id!: string;
   /**Link al prodotto */
   link!: string;
   /**Nome del prodotto */

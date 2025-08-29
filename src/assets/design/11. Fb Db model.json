@@ -9,49 +9,56 @@
       }
     },
     "products": {
-      "customCv": {
+      "custom_cv": {
+        "id": "custom_cv",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/57330d3792ac6f263734a5d12242622b7614d71a/src/assets/images/products/CustomCv/vect.svg",
         "name": "CustomCv",
         "description": "App web che mostra il mostra il CV personalizzato",
         "link": "https://ameapps.github.io/CustomCv/#",
         "tags": ["app", "angular"]
       },
-      "sportTracker": {
+      "sport_tracker": {
+        "id": "sport_tracker",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/SportTracker/vect.svg",
         "name": "SportTracker",
         "description": "App per il monitoraggio delle attività sportive e del cibo assunto",
         "link": "https://ameapps.github.io/SportTracker/#/menu/homepage",
         "tags": ["app", "angular"]
       },
-      "gameScopa": {
+      "game_scopa": {
+        "id": "game_scopa",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/GameScopa/vect.svg",
         "name": "GameScopa",
         "description": "Celebre gioco di carte italiano",
         "link": "https://ameapps.github.io/GameScopa",
         "tags": ["game", "ionic", "angular"]
       },
-      "momsDay": {
+      "moms_day": {
+        "id": "moms_day",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/MomsDay/2025/vect.svg",
         "name": "MomsDay",
         "description": "App per la celebrazione della giornata della mamma",
         "link": "https://ameapps.github.io/MomsDay2025/",
         "tags": ["app", "vanilla"]
       },
-      "wordleCloneV1": {
+      "wordle_clone_v1": {
+        "id": "wordle_clone_v1",
         "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/vect.png?raw=true",
         "name": "WordleCloneV1",
         "description": "App che simula il gioco Wordle",
         "link": "https://ameapps.github.io/WordleCloneV1/",
         "tags": ["game", "vanilla"]
       },
-      "wordleCloneV2": {
+      "wordle_clone_v2": {
+        "id": "wordle_clone_v2",
         "image": "https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/WordleClone/vect.png?raw=true",
         "name": "WordleCloneV2",
         "description": "App che simula il gioco Wordle",
         "link": "https://ameapps.github.io/WordleCloneV2/",
         "tags": ["game", "vanilla"]
       },
-      "lovePurpose": {
+      "love_purpose": {
+        "id": "love_purpose",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/LovePurpose/vect.svg",
         "name": "LovePurpose",
         "description": "App per dichiarare il proprio amore ad una ragazza",
@@ -59,6 +66,7 @@
         "tags": ["app", "vanilla"]
       },
       "workTools": {
+        "id": "work_tools",
         "image": "https://raw.githubusercontent.com/ameapps/SharedLogin/7aeadbf876af41b4981ea1883666fb8948cb3c77/src/assets/images/products/WorkTools/vect.svg",
         "name": "WorkTools",
         "description": "App che propone una serie di tools da usare sul lavoro",
@@ -77,18 +85,18 @@
       "auth": {
         "role": "admin",
         "allowedProds": {
-          "sportTracker": true,
-          "gameScopa": true,
-          "customCv": true,
-          "momsDay": true,
-          "wordleCloneV1": true,
-          "wordleCloneV2": true,
-          "lovePurpose": true,
+          "sport_tracker": true,
+          "game_scopa": true,
+          "custom_cv": true,
+          "moms_day": true,
+          "wordle_clone_v1": true,
+          "wordle_clone_v2": true,
+          "love_purpose": true,
           "workTools": true
         }
       },
       "products": {
-        "sportTracker": {
+        "sport_tracker": {
           "FoodHistory": [
             null,
             [
@@ -132,12 +140,12 @@
             ]
           ]
         },
-        "gameScopa": {},
-        "customCv": {},
-        "momsDay": {},
-        "wordleCloneV1": {},
-        "wordleCloneV2": {},
-        "lovePurpose": {},
+        "game_scopa": {},
+        "custom_cv": {},
+        "moms_day": {},
+        "wordle_clone_v1": {},
+        "wordle_clone_v2": {},
+        "love_purpose": {},
         "workTools": {}
       }
     },
@@ -150,15 +158,15 @@
       "auth": {
         "role": "user",
         "allowedProds": {
-          "momsDay": true,
-          "lovePurpose": true,
-          "wordleCloneV2": true
+          "moms_day": true,
+          "love_purpose": true,
+          "wordle_clone_v2": true
         }
       },
       "products": {
-        "momsDay": {},
-        "lovePurpose": {},
-        "wordleCloneV2": {}
+        "moms_day": {},
+        "love_purpose": {},
+        "wordle_clone_v2": {}
       }
     },
     "vYmKo60fVbYuqnsEOFWRQSSY2Pj1": {
@@ -170,23 +178,23 @@
       "auth": {
         "role": "user",
         "allowedProds": {
-          "sportTracker": true,
-          "gameScopa": true,
-          "customCv": true,
-          "momsDay": true,
-          "wordleCloneV1": false,
-          "wordleCloneV2": true,
-          "lovePurpose": true
+          "sport_tracker": true,
+          "game_scopa": true,
+          "custom_cv": true,
+          "moms_day": true,
+          "wordle_clone_v1": false,
+          "wordle_clone_v2": true,
+          "love_purpose": true
         }
       },
       "products": {
-        "sportTracker": {},
-        "gameScopa": {},
-        "customCv": {},
-        "momsDay": {},
-        "wordleCloneV1": {},
-        "wordleCloneV2": {},
-        "lovePurpose": {}
+        "sport_tracker": {},
+        "game_scopa": {},
+        "custom_cv": {},
+        "moms_day": {},
+        "wordle_clone_v1": {},
+        "wordle_clone_v2": {},
+        "love_purpose": {}
       }
     },
     "7H3Rz6fFBTa0AzlWsVQTFEDxFp92": {
@@ -198,23 +206,23 @@
       "auth": {
         "role": "supervisor",
         "allowedProds": {
-          "sportTracker": true,
-          "gameScopa": true,
-          "customCv": true,
-          "momsDay": true,
-          "wordleCloneV1": false,
-          "wordleCloneV2": true,
-          "lovePurpose": true
+          "sport_tracker": true,
+          "game_scopa": true,
+          "custom_cv": true,
+          "moms_day": true,
+          "wordle_clone_v1": false,
+          "wordle_clone_v2": true,
+          "love_purpose": true
         }
       },
       "products": {
-        "sportTracker": {},
-        "gameScopa": {},
-        "customCv": {},
-        "momsDay": {},
-        "wordleCloneV1": {},
-        "wordleCloneV2": {},
-        "lovePurpose": {}
+        "sport_tracker": {},
+        "game_scopa": {},
+        "custom_cv": {},
+        "moms_day": {},
+        "wordle_clone_v1": {},
+        "wordle_clone_v2": {},
+        "love_purpose": {}
       }
     },
     "kg2Or9xAimYMRODqWFhaGSWFLh42": {
@@ -226,23 +234,23 @@
       "auth": {
         "role": "user",
         "allowedProds": {
-          "sportTracker": true,
-          "gameScopa": true,
-          "customCv": true,
-          "momsDay": true,
-          "wordleCloneV1": false,
-          "wordleCloneV2": true,
-          "lovePurpose": true
+          "sport_tracker": true,
+          "game_scopa": true,
+          "custom_cv": true,
+          "moms_day": true,
+          "wordle_clone_v1": false,
+          "wordle_clone_v2": true,
+          "love_purpose": true
         }
       },
       "products": {
-        "sportTracker": {},
-        "gameScopa": {},
-        "customCv": {},
-        "momsDay": {},
-        "wordleCloneV1": {},
-        "wordleCloneV2": {},
-        "lovePurpose": {}
+        "sport_tracker": {},
+        "game_scopa": {},
+        "custom_cv": {},
+        "moms_day": {},
+        "wordle_clone_v1": {},
+        "wordle_clone_v2": {},
+        "love_purpose": {}
       }
     }
   }
