@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   allTags: string[] = [];
   selectedTags: string[] = [];
   filteredProducts: UserProduct[] = [];
-  hasLoadedProds = false; 
+  hasLoadedProds = false;
 
   constructor(
     public common: CommonService,
@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
     this.updateTags();
     this.filterProducts();
     this.cdRef.detectChanges();
-    this.hasLoadedProds = true; 
+    this.hasLoadedProds = true;
     console.log('Prodotti utente:', this.products);
   }
 
@@ -83,7 +83,7 @@ export class ProductsComponent implements OnInit {
       return;
     }
     if (product.link) {
-      this.router.navigate(['/products/edit']);  
+      this.router.navigate(['/products/edit']);
     }
   }
 
@@ -93,14 +93,11 @@ export class ProductsComponent implements OnInit {
   }
 
   editProfile() {
-    // Logica per modifica profilo (es. apri dialog)
-    alert('Funzione modifica profilo non ancora implementata.');
+    this.router.navigate(['/user/edit']);
   }
 
   addProfile() {
-    if (confirm('Sei sicuro di voler aggiungere un profilo?')) {
-      alert('Funzione ADD profilo non ancora implementata.');
-    }
+    this.router.navigate(['/user/add']);
   }
 
   deleteProfile() {

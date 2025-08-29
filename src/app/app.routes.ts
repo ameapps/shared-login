@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register/register.compo
 import { authGuard } from './shared/guards/auth.guard';
 import { loginGuard } from './shared/guards/login.guard';
 import { CrudProductComponent } from './components/products/crud/crud-product.component';
+import { CrudUserComponent } from './components/user/crud/crud-user/crud-user.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [loginGuard] },
@@ -14,6 +15,8 @@ export const routes: Routes = [
   { path: 'products', component: ProductsComponent, canActivate: [authGuard] },
   { path: 'products/add', component: CrudProductComponent, canActivate: [authGuard] },
   { path: 'products/edit', component: CrudProductComponent, canActivate: [authGuard] },
+  { path: 'user/add', component: CrudUserComponent, canActivate: [authGuard] },
+  { path: 'user/edit', component: CrudUserComponent, canActivate: [authGuard] },
 ];
 
 //AddProductComponent
