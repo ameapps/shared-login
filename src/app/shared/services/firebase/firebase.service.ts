@@ -14,6 +14,7 @@ import {
 import { FirebaseHelper } from '../../helpers/firebaseHelper';
 import { getDatabase, ref, get } from 'firebase/database';
 import { UserExtras } from '../../models/user.extras.model';
+import { UserProduct } from '../../models/userProduct.model';
 
 @Injectable({
   providedIn: 'root',
@@ -185,6 +186,46 @@ export class FirebaseService {
     } catch (error) {
       console.error("Errore nel recupero dei prodotti dell'utente:", error);
       return [];
+    }
+  }
+
+  async createProduct(selectedProduct: UserProduct): Promise<boolean> {
+    try {
+      if (!this.common_service.fbApp) {
+        console.error('API Firebase non inizializzata.');
+        return false;
+      }
+      const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
+      await FirebaseHelper.writeUserData(
+        selectedProduct,
+        this.common_service.fbApp,
+        `sharedLogin/products/${selectedProduct.name}`,
+        dbUrl
+      );
+      console.info(`Prodotto creato per l'utente ${this.common_service.lastLoggedUser?.uId}:`, selectedProduct);
+      return true;
+    } catch (error) {
+      console.error("Errore nella creazione del prodotto:", error);
+      return false;
+    }
+  }
+
+  async editProduct(selectedProduct: UserProduct) {
+    try {
+      if (!this.common_service.fbApp) {
+        console.error('API Firebase non inizializzata.');
+        return;
+      }
+      const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
+      // await FirebaseHelper.setData(
+      //   this.common_service.fbApp,
+      //   `sharedLogin/products/${selectedProduct.id}`,
+      //   selectedProduct,
+      //   dbUrl
+      // );
+      console.info(`Prodotto creato per l'utente ${this.common_service.lastLoggedUser?.uId}:`, selectedProduct);
+    } catch (error) {
+      console.error("Errore nella creazione del prodotto:", error);
     }
   }
 

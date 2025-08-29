@@ -11,8 +11,10 @@ import {
   onValue,
 } from 'firebase/database';
 import { getApps } from 'firebase/app';
+import { UserProduct } from '../models/userProduct.model';
 
 export class FirebaseHelper {
+
   private static apps: Map<string, FirebaseApp> = new Map();
 
   /** Legge dati da un percorso del DB */
@@ -54,9 +56,11 @@ export class FirebaseHelper {
   static async writeUserData(
     objToUpload: object,
     app: FirebaseApp,
-    path: string
+    path: string,
+    dbUrl?: string
   ): Promise<void> {
-    const db = getDatabase(app);
+    // Se dbUrl è fornito, lo passo a getDatabase, altrimenti uso il default
+    const db: Database = dbUrl ? getDatabase(app, dbUrl) : getDatabase(app);
     await set(ref(db, path), objToUpload);
   }
 
