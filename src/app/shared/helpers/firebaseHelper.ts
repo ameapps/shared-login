@@ -65,6 +65,34 @@ export class FirebaseHelper {
   }
 
   /**
+ * Aggiorna solo le proprietà specificate di un oggetto al path dato
+ */
+  static async setProperties(
+    app: FirebaseApp,
+    path: string,
+    propsToUpdate: any,
+    dbUrl?: string
+  ): Promise<void> {
+    try {
+      // Se dbUrl è fornito, lo passo a getDatabase, altrimenti uso il default
+      const db: Database = dbUrl ? getDatabase(app, dbUrl) : getDatabase(app);
+
+      // Prepara il payload per l'update
+      const updates: Record<string, unknown> = {};
+      for (const [key, value] of Object.entries(propsToUpdate)) {
+        updates[`${path}/${key}`] = value;
+      }
+
+      await update(ref(db), updates);
+      console.log(`Aggiornato nodo "${path}" con:`, propsToUpdate);
+    } catch (error) {
+      console.error(`Errore nell'aggiornamento di "${path}":`, error);
+      throw error;
+    }
+  }
+
+
+  /**
    * Aggiunge un elemento a un nodo senza sovrascrivere tutto
    * (senza dipendere da altri metodi interni)
    */

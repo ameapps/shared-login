@@ -66,7 +66,7 @@ export class CrudProductComponent implements OnInit {
     console.log('this.common.selectedProduct.tags', this.common.selectedProduct?.tags)
     if (this.common.selectedProduct == null) return;
     if (this.isEdit) {
-
+      await this.fb_service.editProduct(this.common.selectedProduct);
     }
     else await this.fb_service.createProduct(this.common.selectedProduct);
   }

@@ -180,7 +180,7 @@ export class FirebaseService {
         );
         result[prodName] = data;
       }
-      console.info(`Prodotti recuperati per l'utente ${uid}:`, result);
+      console.info(`Prodotti recuperati`, result);
 
       return result;
     } catch (error) {
@@ -202,7 +202,7 @@ export class FirebaseService {
         `sharedLogin/products/${selectedProduct.name}`,
         dbUrl
       );
-      console.info(`Prodotto creato per l'utente ${this.common_service.lastLoggedUser?.uId}:`, selectedProduct);
+      console.info(`Prodotto creato`, selectedProduct);
       return true;
     } catch (error) {
       console.error("Errore nella creazione del prodotto:", error);
@@ -217,15 +217,16 @@ export class FirebaseService {
         return;
       }
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
-      // await FirebaseHelper.setData(
-      //   this.common_service.fbApp,
-      //   `sharedLogin/products/${selectedProduct.id}`,
-      //   selectedProduct,
-      //   dbUrl
-      // );
-      console.info(`Prodotto creato per l'utente ${this.common_service.lastLoggedUser?.uId}:`, selectedProduct);
+      await FirebaseHelper.setProperties(
+        this.common_service.fbApp,
+        `sharedLogin/products/${selectedProduct.name}`,
+        selectedProduct,
+        dbUrl
+      );
+
+      console.info(`Prodotto modificato`, selectedProduct);
     } catch (error) {
-      console.error("Errore nella creazione del prodotto:", error);
+      console.error("Errore nella modifica del prodotto:", error);
     }
   }
 

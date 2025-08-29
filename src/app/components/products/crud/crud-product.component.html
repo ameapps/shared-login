@@ -83,7 +83,7 @@
           </span>
         </div>
       </div>
-      <button type="submit">Aggiungi prodotto</button>
+      <button type="submit">{{ isEdit ? 'Modifica prodotto' : 'Aggiungi prodotto' }}</button>
     </form>
     <div *ngIf="success" class="success-message">
       Prodotto aggiunto con successo!

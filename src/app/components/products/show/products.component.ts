@@ -87,7 +87,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  async addProduct(): Promise<void> {
+  addProduct(): void {
     this.common.selectedProduct = new UserProduct();
     console.log('adding product')
     this.router.navigate(['/products/add']);
@@ -108,10 +108,9 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  async editProduct($event: any, product: UserProduct) {
+  editProduct($event: any, product: UserProduct) {
     $event.stopPropagation();
     this.common.selectedProduct = { ...product };
-    await this.fb_service.editProduct(this.common.selectedProduct);
     this.router.navigate(['/products/edit']);
   }
 
