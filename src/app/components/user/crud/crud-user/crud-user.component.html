@@ -1,1 +1,63 @@
-<p>crud-user works!</p>
+<div class="add-user-container">
+  <div class="add-user-card">
+    <h2>{{ pageTitle }}</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="user.username"
+          placeholder="Username"
+          required
+        />
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="user.email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div class="input-group" *ngIf="pageTitle === 'Aggiungi nuovo utente'">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="user.password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div class="input-group">
+        <label for="sex">Sesso</label>
+        <select id="sex" name="sex" [(ngModel)]="user.sex">
+          <option value="male">Maschio</option>
+          <option value="female">Femmina</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="icon">Icona profilo</label>
+        <input
+          type="text"
+          id="icon"
+          name="icon"
+          [(ngModel)]="user.icon"
+          placeholder="Nome icona (es: man-default)"
+        />
+      </div>
+      <button type="submit">
+        {{ pageTitle === 'Aggiungi nuovo utente' ? 'Aggiungi utente' : 'Salva modifiche' }}
+      </button>
+    </form>
+    <div *ngIf="success" class="success-message">
+      {{ pageTitle === 'Aggiungi nuovo utente' ? 'Utente aggiunto!' : 'Utente modificato!' }}
+    </div>
+  </div>
+</div>
