@@ -78,13 +78,11 @@ export class ProductsComponent implements OnInit {
   }
 
   openProductLink(product: UserProduct): void {
-    if (product == null) {
+    if (product?.link === null) {
       console.warn('No selected project');
       return;
     }
-    if (product.link) {
-      this.router.navigate(['/products/edit']);
-    }
+    window.open(product.link, '_blank');
   }
 
   addProduct(): void {
