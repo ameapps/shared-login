@@ -175,7 +175,7 @@ export class FirebaseService {
         }
         const data = await FirebaseHelper.getData(
           this.common_service.fbApp,
-          `sharedLogin/products/${prodName}`,
+          `sharedLogin/products/list/${prodName}`,
           this.common_service.appConfig.firebase.dbUrl || ''
         );
         result[prodName] = data;
@@ -196,10 +196,11 @@ export class FirebaseService {
         return false;
       }
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
+      const prodId = this.createProductId(selectedProduct);
       await FirebaseHelper.writeUserData(
         selectedProduct,
         this.common_service.fbApp,
-        `sharedLogin/products/${selectedProduct.name}`,
+        `sharedLogin/products/list/${prodId}`,
         dbUrl
       );
       console.info(`Prodotto creato`, selectedProduct);
@@ -207,6 +208,34 @@ export class FirebaseService {
     } catch (error) {
       console.error("Errore nella creazione del prodotto:", error);
       return false;
+    }
+  }
+
+  /**Metodo che recupera tutti i prodottidel sito */
+  getAllProducts(): string[] {
+    return [];
+  }
+
+  /**Metodo per la creazione di un ID univoco per il prodotto */
+  createProductId(selectedProduct: UserProduct): string {
+    try {
+      //01. controlli 
+      if (selectedProduct == null) {
+        return '';
+      }
+      //02. creo l'id con numero progressivo se già esistente 
+      const allProdsId = this.getAllProducts();
+      let builtId = selectedProduct.name.toLowerCase().replace(' ', '_');
+      if (allProdsId.includes(builtId)) {
+       const sameProds = this.getAllProducts().filter(prod => prod.includes(builtId));
+       const next = sameProds.length + 1;
+       builtId = `${builtId}_${next}`;
+      }
+
+      return builtId;
+    } catch (error) {
+      console.error("Cannot make product id");
+      return '';
     }
   }
 
@@ -219,7 +248,7 @@ export class FirebaseService {
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       await FirebaseHelper.setProperties(
         this.common_service.fbApp,
-        `sharedLogin/products/${selectedProduct.id}`,
+        `sharedLogin/products/list/${selectedProduct.id}`,
         selectedProduct,
         dbUrl
       );
