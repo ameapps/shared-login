@@ -17,7 +17,7 @@ export class CrudProductComponent implements OnInit {
 
   // #region variables
   success = false;
-  selectedTags: string[] = ['gioco', 'app'];
+  selectedTags = this.common.selectedProduct?.tags ?? [];
   customTag: string = '';
   pageTitle = 'Aggiungi nuovo prodotto';
   get isEdit(): boolean {
