@@ -105,7 +105,7 @@ export class FirebaseService {
       }
       //02. Recupero le info extra 
       const userInfo = await FirebaseHelper.getData(
-        this.common_service.fbApp,
+        this.common_service.fbApp!,
         `users/${uid}/info`,
         this.common_service.appConfig.firebase.dbUrl || ''
       ) as UserExtras;
@@ -189,18 +189,28 @@ export class FirebaseService {
     }
   }
 
+  /**Metodo per la creazione di un prodotto su firebase */
   async createProduct(selectedProduct: UserProduct): Promise<boolean> {
     try {
+      //01. controlli 
       if (!this.common_service.fbApp) {
         console.error('API Firebase non inizializzata.');
         return false;
       }
+      //02. salvataggio prodotto
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
-      const prodId = this.createProductId(selectedProduct);
+      const prodId = await this.createProductId(selectedProduct);
       await FirebaseHelper.writeUserData(
         selectedProduct,
         this.common_service.fbApp,
         `sharedLogin/products/list/${prodId}`,
+        dbUrl
+      );
+      //03. salvataggio id prodotto creato 
+      await FirebaseHelper.addOrUpdateProperties(
+        this.common_service.fbApp,
+        `sharedLogin/products/all_ids`,
+        { [prodId]: true },
         dbUrl
       );
       console.info(`Prodotto creato`, selectedProduct);
@@ -212,24 +222,41 @@ export class FirebaseService {
   }
 
   /**Metodo che recupera tutti i prodottidel sito */
-  getAllProducts(): string[] {
-    return [];
+  async getAllProdsId(): Promise<string[]> {
+    try {
+      if (!this.common_service.fbApp) {
+        console.error('API Firebase non inizializzata.');
+        return [];
+      }
+      const allProds = await FirebaseHelper.getData(
+        this.common_service.fbApp,
+        `sharedLogin/products/all_ids`,
+        this.common_service.appConfig.firebase.dbUrl || ''
+      );
+      const keys = Object.keys(allProds) ?? [];
+
+      return keys;
+    } catch (error) {
+      console.error('could not get the list of all the products');
+      return [];
+    }
   }
 
   /**Metodo per la creazione di un ID univoco per il prodotto */
-  createProductId(selectedProduct: UserProduct): string {
+  async createProductId(selectedProduct: UserProduct): Promise<string> {
     try {
       //01. controlli 
       if (selectedProduct == null) {
         return '';
       }
       //02. creo l'id con numero progressivo se già esistente 
-      const allProdsId = this.getAllProducts();
+      const allProdsId = await this.getAllProdsId();
+      console.log('Tutti gli ID dei prodotti esistenti:', allProdsId);
       let builtId = selectedProduct.name.toLowerCase().replace(' ', '_');
       if (allProdsId.includes(builtId)) {
-       const sameProds = this.getAllProducts().filter(prod => prod.includes(builtId));
-       const next = sameProds.length + 1;
-       builtId = `${builtId}_${next}`;
+        const sameProds = allProdsId.filter(prod => prod.includes(builtId));
+        const next = sameProds.length + 1;
+        builtId = `${builtId}_${next}`;
       }
 
       return builtId;
@@ -246,7 +273,7 @@ export class FirebaseService {
         return;
       }
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
-      await FirebaseHelper.setProperties(
+      await FirebaseHelper.addOrUpdateProperties(
         this.common_service.fbApp,
         `sharedLogin/products/list/${selectedProduct.id}`,
         selectedProduct,

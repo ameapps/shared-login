@@ -65,9 +65,10 @@ export class FirebaseHelper {
   }
 
   /**
- * Aggiorna solo le proprietà specificate di un oggetto al path dato
+ * Aggiorna solo le proprietà specificate di un oggetto al path dato.
+ * Se la property non esiste, viene creata nuova.
  */
-  static async setProperties(
+  static async addOrUpdateProperties(
     app: FirebaseApp,
     path: string,
     propsToUpdate: any,

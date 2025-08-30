@@ -63,7 +63,6 @@ export class CrudProductComponent implements OnInit {
     this.success = true;
     setTimeout(() => (this.success = false), 2000);
     this.selectedTags = [];
-    console.log('this.common.selectedProduct.tags', this.common.selectedProduct?.tags)
     if (this.common.selectedProduct == null) return;
     if (this.isEdit) {
       await this.fb_service.editProduct(this.common.selectedProduct);
